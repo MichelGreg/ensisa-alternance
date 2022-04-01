@@ -1,5 +1,6 @@
 package fr.ensisa.alt.presence;
 
+import fr.ensisa.alt.presence.controller.Controller;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -11,7 +12,7 @@ import java.util.Objects;
 public class Application extends javafx.application.Application {
 	@Override
 	public void start(Stage stage) throws IOException {
-		FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("app.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(Controller.class.getResource("app.fxml"));
 		Scene scene = new Scene(fxmlLoader.load(), 550, 520);
 		stage.setTitle("Présence ENSISA");
 		stage.getIcons().add(new Image(Objects.requireNonNull(Application.class.getResourceAsStream("favicon.png"))));

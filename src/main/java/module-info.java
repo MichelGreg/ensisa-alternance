@@ -6,4 +6,6 @@ module fr.ensisa.alt.presence {
 
 	opens fr.ensisa.alt.presence to javafx.fxml;
 	exports fr.ensisa.alt.presence;
+	exports fr.ensisa.alt.presence.controller;
+	opens fr.ensisa.alt.presence.controller to javafx.fxml;
 }
