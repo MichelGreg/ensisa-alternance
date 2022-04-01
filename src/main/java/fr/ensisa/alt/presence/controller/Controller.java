@@ -1,11 +1,13 @@
 package fr.ensisa.alt.presence.controller;
 
+import fr.ensisa.alt.presence.model.Calendar;
 import fr.ensisa.alt.presence.model.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 public class Controller {
 	User user;
+	Calendar calendar;
 
 	@FXML private TextField name;
 	@FXML private ChoiceBox<String> year;
@@ -23,17 +25,26 @@ public class Controller {
 
 	@FXML private Label check;
 	@FXML protected void onHelloButtonClick() {
-		check.setText("Nom = " + name.getText() + " Année = " + year.getValue() + " Filière = " + sector.getValue());
+		check.setText("Nom = " + name.getText() + " Label = " + list.getSelectionModel().getSelectedItem() + " url = " + calendar.getUrl(list.getSelectionModel().getSelectedItem()));
+	}
+	@FXML protected void onAddButtonClick() {
+		calendar.addCalendar(label.getText(), url.getText());
+		list.itemsProperty().bind(calendar.calendarsNameProperty());
+		check.setText("Click !  label = " + label.getText() + " url = " + url.getText());
 	}
 
 	public void initialize() {
 		this.user = new User();
+		this.calendar = new Calendar();
 
 		name.textProperty().set(user.getNameProperty());
 		year.itemsProperty().bind(user.yearsProperty());
 		year.valueProperty().set(user.getYearProperty());
 		sector.itemsProperty().bind(user.sectorsProperty());
 		sector.valueProperty().set(user.getSectorProperty());
+		month.itemsProperty().bind(calendar.monthsProperty());
+		month.valueProperty().set(calendar.getCurrMonthProperty());
+		//list.itemsProperty().bind(calendar.calendarsNameProperty());
 	}
 
 }

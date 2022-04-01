@@ -68,7 +68,7 @@
             <ListView fx:id="list" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="2" GridPane.rowSpan="2" />
             <Button fx:id="delete" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" text="Supprimer" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
             <Button fx:id="edit" minWidth="75.0" mnemonicParsing="false" text="Editer" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-            <Button fx:id="add" minWidth="75.0" mnemonicParsing="false" text="Ajouter" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Button fx:id="add" minWidth="75.0" mnemonicParsing="false" onMouseClicked="#onAddButtonClick" text="Ajouter" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
             <TextField fx:id="url" text="https://www.emploisdutemps.uha.fr/jsp/.../" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="1" />
             <Label prefHeight="18.0" prefWidth="178.0" text="Ajouter un emploi du temps :" GridPane.columnSpan="2147483647" GridPane.valignment="TOP">
                 <padding>
