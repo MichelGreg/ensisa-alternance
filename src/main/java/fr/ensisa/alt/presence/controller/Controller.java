@@ -1,9 +1,11 @@
 package fr.ensisa.alt.presence.controller;
 
+import fr.ensisa.alt.presence.model.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 public class Controller {
+	User user;
 
 	@FXML private TextField name;
 	@FXML private ChoiceBox<String> year;
@@ -19,9 +21,19 @@ public class Controller {
 	@FXML private Button manual;
 
 
-	@FXML private Label welcomeText;
+	@FXML private Label check;
 	@FXML protected void onHelloButtonClick() {
-		welcomeText.setText("Test du bouton fonctionel : Hello world ! :)");
+		check.setText("Nom = " + name.getText() + " Année = " + year.getValue() + " Filière = " + sector.getValue());
+	}
+
+	public void initialize() {
+		this.user = new User();
+
+		name.textProperty().set(user.getNameProperty());
+		year.itemsProperty().bind(user.yearsProperty());
+		year.valueProperty().set(user.getYearProperty());
+		sector.itemsProperty().bind(user.sectorsProperty());
+		sector.valueProperty().set(user.getSectorProperty());
 	}
 
 }

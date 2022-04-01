@@ -13,7 +13,7 @@ public class Application extends javafx.application.Application {
 	@Override
 	public void start(Stage stage) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(Controller.class.getResource("app.fxml"));
-		Scene scene = new Scene(fxmlLoader.load(), 550, 520);
+		Scene scene = new Scene(fxmlLoader.load(), 550, 700);
 		stage.setTitle("Présence ENSISA");
 		stage.getIcons().add(new Image(Objects.requireNonNull(Application.class.getResourceAsStream("favicon.png"))));
 		stage.setScene(scene);

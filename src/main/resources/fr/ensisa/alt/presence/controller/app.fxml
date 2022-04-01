@@ -41,7 +41,7 @@
                 </GridPane.margin>
             </Label>
             <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="18.0" prefWidth="62.0" text="Filière : " textAlignment="RIGHT" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-            <TextField fx:id="name" prefHeight="26.0" prefWidth="306.0" text="Grégoire MICHEL" GridPane.columnIndex="1" GridPane.columnSpan="3" />
+            <TextField fx:id="name" prefHeight="26.0" prefWidth="306.0" text="Prénom NOM" GridPane.columnIndex="1" GridPane.columnSpan="3" />
             <ChoiceBox fx:id="year" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <ChoiceBox fx:id="sector" prefHeight="26.0" prefWidth="802.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
         </GridPane>
@@ -63,13 +63,13 @@
                 <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <Label alignment="CENTER_RIGHT" minWidth="46.0" prefHeight="18.0" prefWidth="46.0" text="Libellé : " GridPane.rowIndex="1" />
-            <TextField fx:id="label" prefHeight="26.0" prefWidth="400.0" text="Grégoire MICHEL" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="label" prefHeight="26.0" prefWidth="400.0" text="Semestre X" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label prefHeight="18.0" prefWidth="30.0" text="URL : " GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
             <ListView fx:id="list" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="2" GridPane.rowSpan="2" />
             <Button fx:id="delete" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" text="Supprimer" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
             <Button fx:id="edit" minWidth="75.0" mnemonicParsing="false" text="Editer" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
             <Button fx:id="add" minWidth="75.0" mnemonicParsing="false" text="Ajouter" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-            <TextField fx:id="url" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+            <TextField fx:id="url" text="https://www.emploisdutemps.uha.fr/jsp/.../" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="1" />
             <Label prefHeight="18.0" prefWidth="178.0" text="Ajouter un emploi du temps :" GridPane.columnSpan="2147483647" GridPane.valignment="TOP">
                 <padding>
                     <Insets left="4.0" />
@@ -111,6 +111,6 @@
             </GridPane>
         </AnchorPane>
     </TitledPane>
-    <Label fx:id="welcomeText" alignment="CENTER" layoutX="142.0" layoutY="611.0" prefHeight="18.0" prefWidth="486.0" textAlignment="CENTER" />
-    <Button layoutX="385.0" layoutY="585.0" mnemonicParsing="false" onMousePressed="#onHelloButtonClick" text="Test" />
+    <Label fx:id="check" alignment="CENTER" layoutX="14.0" layoutY="589.0" prefHeight="18.0" prefWidth="486.0" textAlignment="CENTER" />
+    <Button layoutX="238.0" layoutY="547.0" mnemonicParsing="false" onMousePressed="#onHelloButtonClick" text="Test" />
 </AnchorPane>

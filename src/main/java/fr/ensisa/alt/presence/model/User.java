@@ -39,9 +39,4 @@ public class User {
 		return sectors;
 	}
 
-
-	//private StringProperty name = new SimpleStringProperty("Prénom NOM");
-	//private ObjectProperty<String> year = new SimpleObjectProperty<>("2A");
-	//private ObjectProperty<String> sector = new SimpleObjectProperty<>("Informatique & Réseaux");
-
 }
