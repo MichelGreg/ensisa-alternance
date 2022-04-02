@@ -28,25 +28,47 @@ public class Controller {
 		check.setText("Nom = " + name.getText() + " Label = " + list.getSelectionModel().getSelectedItem() + " url = " + calendar.getUrl(list.getSelectionModel().getSelectedItem()));
 	}
 	@FXML protected void onAddButtonClick() {
-		calendar.addCalendar(label.getText(), url.getText());
-		list.itemsProperty().bind(calendar.calendarsNameProperty());
-		check.setText("Click !  label = " + label.getText() + " url = " + url.getText());
+		try {
+			if (label.getText().isBlank() || url.getText().isBlank()) {
+				throw new IllegalArgumentException("Can't add a calendar with empty label or url");
+			}
+			calendar.addCalendar(label.getText(), url.getText());
+			list.itemsProperty().bind(calendar.calendarsNameProperty());
+			check.setText("Click !  label = " + label.getText() + " url = " + url.getText());
+		} catch (NullPointerException e) {
+			//TODO: coloration des champs vides.
+			System.out.println("label or url field is empty");
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	@FXML protected void onDeleteButtonClick() {
-		calendar.rmCalendar(list.getSelectionModel().getSelectedItem());
-		list.itemsProperty().bind(calendar.calendarsNameProperty());
-		check.setText("Delete !");
+		try {
+			calendar.rmCalendar(list.getSelectionModel().getSelectedItem());
+			list.itemsProperty().bind(calendar.calendarsNameProperty());
+			check.setText("Delete !");
+		} catch (NullPointerException e) {
+			System.out.println("Can't delete if no calendar selected");
+		}
 	}
 	@FXML protected void onEditButtonClick() {
-		calendar.editCalendar(list.getSelectionModel().getSelectedItem(), label.getText(), url.getText());
-		list.itemsProperty().bind(calendar.calendarsNameProperty());
-		check.setText("Updated !");
+		try {
+			calendar.editCalendar(list.getSelectionModel().getSelectedItem(), label.getText(), url.getText());
+			list.itemsProperty().bind(calendar.calendarsNameProperty());
+			check.setText("Updated !");
+		} catch (NullPointerException e) {
+			System.out.println("Can't edit if no calendar selected");
+		}
 	}
 
 	@FXML protected void onListSelection() {
-		String key = list.getSelectionModel().getSelectedItem();
-		label.setText(key);
-		url.setText(calendar.getUrl(key));
+		try {
+			String key = list.getSelectionModel().getSelectedItem();
+			label.setText(key);
+			url.setText(calendar.getUrl(key));
+		} catch (NullPointerException e){
+			System.out.println("No calendar selected");
+		}
 	}
 
 	public void initialize() {
