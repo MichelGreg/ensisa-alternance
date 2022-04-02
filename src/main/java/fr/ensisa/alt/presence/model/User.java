@@ -4,7 +4,7 @@ import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 
 public class User {
-	private final StringProperty name = new SimpleStringProperty("Prénom NOM");
+	private final StringProperty name = new SimpleStringProperty();
 
 	private final StringProperty year = new SimpleStringProperty("2A");
 	private final ListProperty<String> years = new SimpleListProperty<>(FXCollections.observableArrayList("2A", "3A"));
