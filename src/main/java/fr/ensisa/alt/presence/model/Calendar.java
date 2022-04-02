@@ -31,6 +31,9 @@ public class Calendar {
 	public String getUrl(String label) {
 		return calendars.get(label);
 	}
+	public void rmCalendar(String calToDel) {
+		calendars.remove(calToDel);
+	}
 
 	public ListProperty<String> calendarsNameProperty() {
 		return new SimpleListProperty<>(FXCollections.observableList(new ArrayList<>(calendars.keySet())));

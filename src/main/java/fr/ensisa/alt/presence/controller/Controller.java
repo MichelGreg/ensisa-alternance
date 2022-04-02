@@ -32,6 +32,11 @@ public class Controller {
 		list.itemsProperty().bind(calendar.calendarsNameProperty());
 		check.setText("Click !  label = " + label.getText() + " url = " + url.getText());
 	}
+	@FXML protected  void onDeleteButtonClick() {
+		calendar.rmCalendar(list.getSelectionModel().getSelectedItem());
+		list.itemsProperty().bind(calendar.calendarsNameProperty());
+		check.setText("Delete !");
+	}
 
 	public void initialize() {
 		this.user = new User();
