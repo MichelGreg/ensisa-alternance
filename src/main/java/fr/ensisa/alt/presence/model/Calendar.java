@@ -34,6 +34,10 @@ public class Calendar {
 	public void rmCalendar(String calToDel) {
 		calendars.remove(calToDel);
 	}
+	public void editCalendar(String selectedItem, String newLabel, String newUrl) {
+		this.rmCalendar(selectedItem);
+		this.addCalendar(newLabel, newUrl);
+	}
 
 	public ListProperty<String> calendarsNameProperty() {
 		return new SimpleListProperty<>(FXCollections.observableList(new ArrayList<>(calendars.keySet())));

@@ -37,6 +37,11 @@ public class Controller {
 		list.itemsProperty().bind(calendar.calendarsNameProperty());
 		check.setText("Delete !");
 	}
+	@FXML protected  void onEditButtonClick() {
+		calendar.editCalendar(list.getSelectionModel().getSelectedItem(), label.getText(), url.getText());
+		list.itemsProperty().bind(calendar.calendarsNameProperty());
+		check.setText("Updated !");
+	}
 
 	public void initialize() {
 		this.user = new User();
