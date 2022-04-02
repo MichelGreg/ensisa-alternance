@@ -32,15 +32,21 @@ public class Controller {
 		list.itemsProperty().bind(calendar.calendarsNameProperty());
 		check.setText("Click !  label = " + label.getText() + " url = " + url.getText());
 	}
-	@FXML protected  void onDeleteButtonClick() {
+	@FXML protected void onDeleteButtonClick() {
 		calendar.rmCalendar(list.getSelectionModel().getSelectedItem());
 		list.itemsProperty().bind(calendar.calendarsNameProperty());
 		check.setText("Delete !");
 	}
-	@FXML protected  void onEditButtonClick() {
+	@FXML protected void onEditButtonClick() {
 		calendar.editCalendar(list.getSelectionModel().getSelectedItem(), label.getText(), url.getText());
 		list.itemsProperty().bind(calendar.calendarsNameProperty());
 		check.setText("Updated !");
+	}
+
+	@FXML protected void onListSelection() {
+		String key = list.getSelectionModel().getSelectedItem();
+		label.setText(key);
+		url.setText(calendar.getUrl(key));
 	}
 
 	public void initialize() {
