@@ -6,6 +6,7 @@ module fr.ensisa.alt.presence {
 	requires org.apache.poi.ooxml;
 	requires org.mnode.ical4j.core;
 
+	exports fr.ensisa.alt.presence.model;
 	opens fr.ensisa.alt.presence to javafx.fxml;
 	exports fr.ensisa.alt.presence;
 	exports fr.ensisa.alt.presence.controller;
