@@ -3,6 +3,7 @@ package fr.ensisa.alt.presence;
 import fr.ensisa.alt.presence.controller.Controller;
 import fr.ensisa.alt.presence.controller.CourseController;
 import fr.ensisa.alt.presence.controller.ExcelController;
+import fr.ensisa.alt.presence.model.Course;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -21,7 +22,11 @@ public class Application extends javafx.application.Application {
 		stage.setScene(scene);
 		stage.show();
 		ExcelController ec = new ExcelController();
+		ec.basicScript();
 		CourseController cc = new CourseController();
+		for (Course c : cc.getSortedCourses() ) {
+			System.out.println(c.toString());
+		}
 	}
 
 	public static void main(String[] args) {
