@@ -1,6 +1,7 @@
 package fr.ensisa.alt.presence;
 
 import fr.ensisa.alt.presence.controller.Controller;
+import fr.ensisa.alt.presence.controller.CourseController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -18,6 +19,7 @@ public class Application extends javafx.application.Application {
 		stage.getIcons().add(new Image(Objects.requireNonNull(Application.class.getResourceAsStream("favicon.png"))));
 		stage.setScene(scene);
 		stage.show();
+		CourseController cc = new CourseController();
 	}
 
 	public static void main(String[] args) {
