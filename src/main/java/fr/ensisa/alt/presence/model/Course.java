@@ -5,12 +5,14 @@ import net.fortuna.ical4j.model.component.CalendarComponent;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
+import static java.lang.String.format;
+
 public class Course implements Comparable<Course> {
 	private final String name;
 	private final String prof;
 	private final String strDate;
 	private final String strHours;
-	private final String duration;
+	private final Duration duration;
 	private final ZonedDateTime start;
 	private final ZonedDateTime end;
 
@@ -21,7 +23,7 @@ public class Course implements Comparable<Course> {
 		this.end = LocalDateTime.parse(item.getProperty("DTEND").get().getValue(), DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss'Z'")).atZone(ZoneId.of("UTC")).withZoneSameInstant(ZoneId.of("Europe/Paris"));
 		this.strDate = this.start.format(DateTimeFormatter.ofPattern("dd/MM"));
 		this.strHours = this.start.format(DateTimeFormatter.ofPattern("HH'h'mm")) + " - " + this.end.format(DateTimeFormatter.ofPattern("HH'h'mm"));
-		this.duration = String.valueOf(Duration.between(start, end).toHoursPart()) + 'h' + Duration.between(start, end).toMinutesPart();
+		this.duration = Duration.between(start, end);
 	}
 
 	private String parseProf(String desc) {
@@ -31,7 +33,7 @@ public class Course implements Comparable<Course> {
 					if (Character.isDigit(character)) {
 						break;
 					}
-					return descItem;
+					return descItem.split(" ")[0];
 				}
 			}
 		}
@@ -58,7 +60,11 @@ public class Course implements Comparable<Course> {
 		return strHours;
 	}
 
-	public String getDuration() {
+	public String getStrDuration() {
+		return String.valueOf(duration.toHoursPart()) + 'h' + format("%02d", duration.toMinutesPart());
+	}
+
+	public Duration getDuration() {
 		return duration;
 	}
 

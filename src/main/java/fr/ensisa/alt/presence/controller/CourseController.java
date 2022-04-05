@@ -7,19 +7,33 @@ import net.fortuna.ical4j.model.component.CalendarComponent;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Objects;
 
 public class CourseController {
 	private Calendar icalendar;
 
 	public CourseController() {
-		try {
-			FileInputStream calInputStream = new FileInputStream(new File(Objects.requireNonNull(Controller.class.getResource("ADECal.ics")).toURI()));
-			CalendarBuilder iCalBuilder = new CalendarBuilder();
-			this.icalendar = iCalBuilder.build(calInputStream);
+	}
 
+	public CourseController(File file) {
+		setIcalendarFromFile(file);
+	}
+
+	public void setIcalendarFromFile (File ical) {
+		try {
+			CalendarBuilder iCalBuilder = new CalendarBuilder();
+			this.icalendar = iCalBuilder.build(new FileInputStream(ical));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void setIcalendarFromURL(String url) {
+		try {
+			CalendarBuilder iCalBuilder = new CalendarBuilder();
+			this.icalendar = iCalBuilder.build(new URL(url).openStream());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
