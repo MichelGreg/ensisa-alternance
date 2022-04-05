@@ -25,6 +25,16 @@ public class CourseController {
 		}
 	}
 
+	public CourseController(File file) {
+		try {
+		CalendarBuilder iCalBuilder = new CalendarBuilder();
+		this.icalendar = iCalBuilder.build(new FileInputStream(file));
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+}
+
 	public ArrayList<Course> getSortedCourses() {
 		ArrayList<Course> courses = new ArrayList<>();
 		for (CalendarComponent item : icalendar.getComponents()) {
