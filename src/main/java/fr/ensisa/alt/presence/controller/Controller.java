@@ -8,10 +8,13 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 
 public class Controller {
-	User user;
-	Calendar calendar;
+	private User user;
+	private Calendar calendar;
+	private final ExcelController excelController = new ExcelController();
+	private final CourseController courseController = new CourseController();
 
 	@FXML private TextField name;
 	@FXML private ChoiceBox<String> year;
@@ -65,19 +68,12 @@ public class Controller {
 		}
 	}
 	@FXML protected void onOpenFileClick() {
-		File ical = selectFile(0);
-		CourseController courseController = new CourseController(ical);
-		ExcelController excelController = new ExcelController();
+		this.courseController.setIcalendarFromFile(selectFile(0));
 
-		// Traitement du fichier excel
-
-		File outputFile = selectFile(1);
-		//excelController.saveFile(outputFile);
+		this.excelController.basicScript(courseController.getSortedCourses());
+		this.excelController.saveFile(selectFile(1));
 	}
 	@FXML protected void onGenerateFileClick() {
-		CourseController courseController = new CourseController();
-		ExcelController excelController = new ExcelController();
-
 		// Traitement du fichier excel
 
 		File outputFile = selectFile(1);
@@ -119,10 +115,13 @@ public class Controller {
 		if (mode == 0) {
 			fileChooser.setTitle("Générer à partir d'un fichier .ics");
 			fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Calendar File (*.ics)", "*.ics"));
+			fileChooser.setInitialDirectory(new File(System.getProperty("user.home"), "Downloads"));
 			return fileChooser.showOpenDialog(stage);
 		} else if (mode == 1) {
 			fileChooser.setTitle("Enregistrer l'Excel généré");
 			fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel Files (*.xlsx)", "*.xlsx"));
+			fileChooser.setInitialDirectory(new File(System.getProperty("user.home"), "Downloads"));
+			fileChooser.setInitialFileName("Fiche_présence");
 			return fileChooser.showSaveDialog(stage);
 		} else {
 			return null;

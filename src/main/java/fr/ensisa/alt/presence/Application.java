@@ -21,12 +21,6 @@ public class Application extends javafx.application.Application {
 		stage.getIcons().add(new Image(Objects.requireNonNull(Application.class.getResourceAsStream("favicon.png"))));
 		stage.setScene(scene);
 		stage.show();
-		ExcelController ec = new ExcelController();
-		CourseController cc = new CourseController();
-		ec.basicScript(cc.getSortedCourses());
-		for (Course c : cc.getSortedCourses() ) {
-			System.out.println(c.toString());
-		}
 	}
 
 	public static void main(String[] args) {

@@ -9,31 +9,25 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Objects;
 
 public class CourseController {
 	private Calendar icalendar;
 
 	public CourseController() {
-		try {
-			FileInputStream calInputStream = new FileInputStream(new File(Objects.requireNonNull(Controller.class.getResource("ADECal.ics")).toURI()));
-			CalendarBuilder iCalBuilder = new CalendarBuilder();
-			this.icalendar = iCalBuilder.build(calInputStream);
+	}
 
+	public CourseController(File file) {
+		setIcalendarFromFile(file);
+	}
+
+	public void setIcalendarFromFile (File ical) {
+		try {
+			CalendarBuilder iCalBuilder = new CalendarBuilder();
+			this.icalendar = iCalBuilder.build(new FileInputStream(ical));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
-	public CourseController(File file) {
-		try {
-		CalendarBuilder iCalBuilder = new CalendarBuilder();
-		this.icalendar = iCalBuilder.build(new FileInputStream(file));
-
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
-}
 
 	public ArrayList<Course> getSortedCourses() {
 		ArrayList<Course> courses = new ArrayList<>();

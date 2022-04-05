@@ -29,7 +29,7 @@ public class ExcelController {
 		}
 	}
 
-	public void basicScript(ArrayList<Course> courses) throws IOException {
+	public void basicScript(ArrayList<Course> courses) {
 		String NAME_Surname = "MICHEL Grégoire";
 		String FILIERE = "2ème année Informatique et Réseaux";
 		String EX_FILE = "Fiche_presence_TEST.xlsx";
@@ -72,9 +72,16 @@ public class ExcelController {
 		CellReference cr6 = new CellReference("G60");
 		sheet.getRow(cr6.getRow()).getCell(cr6.getCol()).setCellValue(strTotal);
 
-		FileOutputStream out = new FileOutputStream(EX_FILE);
-		wb.write(out);
-		out.close();
+	}
+
+	public void saveFile(File file) {
+		try {
+			FileOutputStream out = new FileOutputStream(file);
+			wb.write(out);
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
