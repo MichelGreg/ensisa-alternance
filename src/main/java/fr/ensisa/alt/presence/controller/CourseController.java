@@ -7,6 +7,7 @@ import net.fortuna.ical4j.model.component.CalendarComponent;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -24,6 +25,15 @@ public class CourseController {
 		try {
 			CalendarBuilder iCalBuilder = new CalendarBuilder();
 			this.icalendar = iCalBuilder.build(new FileInputStream(ical));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void setIcalendarFromURL(String url) {
+		try {
+			CalendarBuilder iCalBuilder = new CalendarBuilder();
+			this.icalendar = iCalBuilder.build(new URL(url).openStream());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

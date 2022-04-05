@@ -8,7 +8,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
 import java.time.Duration;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static java.lang.String.format;
@@ -29,7 +29,7 @@ public class ExcelController {
 		}
 	}
 
-	public void basicScript(ArrayList<Course> courses) {
+	public void basicScript(List<Course> courses) {
 		String NAME_Surname = "MICHEL Grégoire";
 		String FILIERE = "2ème année Informatique et Réseaux";
 		String EX_FILE = "Fiche_presence_TEST.xlsx";
