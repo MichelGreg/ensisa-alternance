@@ -22,8 +22,8 @@ public class Application extends javafx.application.Application {
 		stage.setScene(scene);
 		stage.show();
 		ExcelController ec = new ExcelController();
-		ec.basicScript();
 		CourseController cc = new CourseController();
+		ec.basicScript(cc.getSortedCourses());
 		for (Course c : cc.getSortedCourses() ) {
 			System.out.println(c.toString());
 		}
