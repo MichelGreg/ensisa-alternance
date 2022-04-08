@@ -10,18 +10,18 @@ import java.util.*;
 
 public class Calendar {
 	private static final TreeMap<Integer, String> MONTHS = new TreeMap<>(Map.ofEntries(
-			Map.entry(1, "Janvier"),
-			Map.entry(2, "Février"),
-			Map.entry(3, "Mars"),
-			Map.entry(4, "Avril"),
-			Map.entry(5, "Mai"),
-			Map.entry(6, "Juin"),
-			Map.entry(7, "Juillet"),
-			Map.entry(8, "Aout"),
-			Map.entry(9, "Septembre"),
-			Map.entry(10, "Octobre"),
-			Map.entry(11, "Novembre"),
-			Map.entry(12, "Décembre")
+			Map.entry(1, "JANVIER"),
+			Map.entry(2, "FÉVRIER"),
+			Map.entry(3, "MARS"),
+			Map.entry(4, "AVRIL"),
+			Map.entry(5, "MAI"),
+			Map.entry(6, "JUIN"),
+			Map.entry(7, "JUILLET"),
+			Map.entry(8, "AOÛT"),
+			Map.entry(9, "SEPTEMBRE"),
+			Map.entry(10, "OCTOBRE"),
+			Map.entry(11, "NOVEMBRE"),
+			Map.entry(12, "DECEMBRE")
 	));
 
 	private final TreeMap<String, String> calendars = new TreeMap<>();

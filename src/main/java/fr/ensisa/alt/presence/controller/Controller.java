@@ -71,14 +71,14 @@ public class Controller {
 	@FXML protected void onOpenFileClick() {
 		this.courseController.setIcalendarFromFile(selectFile(0));
 
-		this.excelController.basicScript(courseController.getSortedCourses());
+		this.excelController.basicScript(courseController.getSortedCourses(), name.getText(), year.getValue(), sector.getValue(), month.getValue());
 		this.excelController.saveFile(selectFile(1));
 	}
 	@FXML protected void onGenerateFileClick() {
 		// Traitement du fichier excel
 		this.courseController.setIcalendarFromURL(TEST_URL);
 
-		this.excelController.basicScript(courseController.getSortedCourses());
+		this.excelController.basicScript(courseController.getSortedCourses(), name.getText(), year.getValue(), sector.getValue(), month.getValue());
 		File outputFile = selectFile(1);
 		excelController.saveFile(outputFile);
 	}
@@ -124,7 +124,7 @@ public class Controller {
 			fileChooser.setTitle("Enregistrer l'Excel généré");
 			fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel Files (*.xlsx)", "*.xlsx"));
 			fileChooser.setInitialDirectory(new File(System.getProperty("user.home"), "Downloads"));
-			fileChooser.setInitialFileName("Fiche_présence");
+			fileChooser.setInitialFileName("Fiche_présence_" + month.getValue());
 			return fileChooser.showSaveDialog(stage);
 		} else {
 			return null;

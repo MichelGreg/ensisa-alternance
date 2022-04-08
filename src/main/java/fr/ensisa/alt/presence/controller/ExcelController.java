@@ -29,21 +29,26 @@ public class ExcelController {
 		}
 	}
 
-	public void basicScript(List<Course> courses) {
+	public void basicScript(List<Course> courses, String name, String year, String sector, String month) {
 		String NAME_Surname = "MICHEL Grégoire";
-		String FILIERE = "2ème année Informatique et Réseaux";
-		String EX_FILE = "Fiche_presence_TEST.xlsx";
-		String ONGLET = "Feuil1";
-		String CAL_FILE = "ADECal.ics";
+		String FILIERE = "";
+		if (year.matches("[1-3]A")) {
+			if (year.charAt(0) == '1') {
+				FILIERE = "1ère";
+			} else {
+				FILIERE = year.charAt(0) + "ème";
+			}
+			FILIERE += " année " + sector;
+		}
 
 		CellReference cr = new CellReference("C3");
-		sheet.getRow(cr.getRow()).getCell(cr.getCol()).setCellValue(NAME_Surname);
+		sheet.getRow(cr.getRow()).getCell(cr.getCol()).setCellValue(name);
 
 		CellReference cr2 = new CellReference("C4");
 		sheet.getRow(cr2.getRow()).getCell(cr2.getCol()).setCellValue(FILIERE);
 
 		CellReference cr3 = new CellReference("A2");
-		sheet.getRow(cr3.getRow()).getCell(cr3.getCol()).setCellValue("du mois de " + "TEST" + " 2022");
+		sheet.getRow(cr3.getRow()).getCell(cr3.getCol()).setCellValue("du mois de " + month + " 2022");
 
 		int line = 7;
 		Duration total = Duration.ZERO;
