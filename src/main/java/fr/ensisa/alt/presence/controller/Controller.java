@@ -2,6 +2,8 @@ package fr.ensisa.alt.presence.controller;
 
 import fr.ensisa.alt.presence.model.Calendar;
 import fr.ensisa.alt.presence.model.User;
+import fr.ensisa.alt.presence.model.UserPersister;
+import jakarta.xml.bind.JAXBException;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
@@ -16,6 +18,7 @@ import java.util.Locale;
 public class Controller {
 	private final String TEST_URL = "https://www.emploisdutemps.uha.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=bf2c64d11bfda874e5e5e7e10fcd13a50b42f0976007a22e3029ca7f36487f162a2c262ab3ba48506729f6560ae33af62704eb6c3e6444d06eebeb5635bb9f49,1";
 
+	private UserPersister persister;
 	private User user;
 	private Calendar calendar;
 	private final ExcelController excelController = new ExcelController();
@@ -36,8 +39,16 @@ public class Controller {
 
 
 	@FXML private Label check;
-	@FXML protected void onHelloButtonClick() {
+	@FXML protected void onHelloButtonClick() throws JAXBException {
 		check.setText("Nom = " + name.getText() + " Label = " + list.getSelectionModel().getSelectedItem() + " url = " + calendar.getUrl(list.getSelectionModel().getSelectedItem()));
+		user.setName(name.getText());
+		user.setYear(year.getValue());
+		user.setSector(sector.getValue());
+
+		persister.serialiseUser(user);
+
+		User storedUser = persister.deserialiseUser();
+
 	}
 	@FXML protected void onAddButtonClick() {
 		try {
@@ -96,9 +107,15 @@ public class Controller {
 		}
 	}
 
-	public void initialize() {
-		this.user = new User();
-		this.calendar = new Calendar();
+	public void initialize() throws JAXBException {
+		this.persister = new UserPersister("Store.jaxb");
+		if ((new File("Store.jaxb").exists())) {
+			this.user = persister.deserialiseUser();
+			System.out.println("File exists");
+		} else {
+			this.user = new User();
+			System.out.println("File doesn't exists");
+		}
 
 		this.calendar = user.getCalendar();
 
