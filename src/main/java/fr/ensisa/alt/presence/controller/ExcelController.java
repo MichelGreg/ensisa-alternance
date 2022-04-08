@@ -56,6 +56,9 @@ public class ExcelController {
 		int line = 7;
 		Duration total = Duration.ZERO;
 		for (Course c : courses) {
+			if (c.getStart().getMonthValue() != month) {
+				continue;
+			}
 			if (line < 60) {
 				if (line == 36) {
 					CellReference cr4 = new CellReference("G"+(line+1));
