@@ -1,12 +1,15 @@
 package fr.ensisa.alt.presence.model;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 
 import java.util.*;
 
+@XmlRootElement
 public class Calendar {
-
+	@XmlElement(required = true)
 	private final TreeMap<String, String> calendars = new TreeMap<>();
 	public void addCalendar(String label, String url) {
 		calendars.put(label, url);
