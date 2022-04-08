@@ -6,8 +6,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 import java.io.File;
+import java.time.Month;
+import java.time.format.TextStyle;
+import java.util.Locale;
 
 public class Controller {
 	private final String TEST_URL = "https://www.emploisdutemps.uha.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=bf2c64d11bfda874e5e5e7e10fcd13a50b42f0976007a22e3029ca7f36487f162a2c262ab3ba48506729f6560ae33af62704eb6c3e6444d06eebeb5635bb9f49,1";
@@ -26,7 +30,7 @@ public class Controller {
 	@FXML private Button add;
 	@FXML private Button edit;
 	@FXML private Button delete;
-	@FXML private ChoiceBox<String> month;
+	@FXML private ChoiceBox<Integer> month;
 	@FXML private Button auto;
 	@FXML private Button manual;
 
@@ -102,6 +106,17 @@ public class Controller {
 		sector.itemsProperty().bind(user.sectorsProperty());
 		sector.valueProperty().set(user.getSectorProperty());
 		month.itemsProperty().bind(calendar.monthsProperty());
+		month.setConverter(new StringConverter<>() {
+			@Override
+			public String toString(Integer m) {
+				return Month.of(m).getDisplayName(TextStyle.FULL, Locale.FRENCH);
+			}
+
+			@Override
+			public Integer fromString(String s) {
+				return null;
+			}
+		});
 		month.valueProperty().set(calendar.getCurrMonthProperty());
 	}
 
@@ -124,7 +139,7 @@ public class Controller {
 			fileChooser.setTitle("Enregistrer l'Excel généré");
 			fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel Files (*.xlsx)", "*.xlsx"));
 			fileChooser.setInitialDirectory(new File(System.getProperty("user.home"), "Downloads"));
-			fileChooser.setInitialFileName("Fiche_présence_" + month.getValue());
+			fileChooser.setInitialFileName("Fiche_présence_" + Month.of(month.getValue()).getDisplayName(TextStyle.FULL, Locale.FRENCH).toUpperCase());
 			return fileChooser.showSaveDialog(stage);
 		} else {
 			return null;

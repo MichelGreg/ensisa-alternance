@@ -8,7 +8,10 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
 import java.time.Duration;
+import java.time.Month;
+import java.time.format.TextStyle;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 import static java.lang.String.format;
@@ -29,8 +32,8 @@ public class ExcelController {
 		}
 	}
 
-	public void basicScript(List<Course> courses, String name, String year, String sector, String month) {
-		String NAME_Surname = "MICHEL Grégoire";
+	public void basicScript(List<Course> courses, String name, String year, String sector, Integer month) {
+		String upperMonth = Month.of(month).getDisplayName(TextStyle.FULL, Locale.FRENCH).toUpperCase();
 		String FILIERE = "";
 		if (year.matches("[1-3]A")) {
 			if (year.charAt(0) == '1') {
@@ -48,7 +51,7 @@ public class ExcelController {
 		sheet.getRow(cr2.getRow()).getCell(cr2.getCol()).setCellValue(FILIERE);
 
 		CellReference cr3 = new CellReference("A2");
-		sheet.getRow(cr3.getRow()).getCell(cr3.getCol()).setCellValue("du mois de " + month + " 2022");
+		sheet.getRow(cr3.getRow()).getCell(cr3.getCol()).setCellValue("du mois de " + upperMonth + " 2022");
 
 		int line = 7;
 		Duration total = Duration.ZERO;
