@@ -13,8 +13,8 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="607.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ensisa.alt.presence.controller.Controller">
-    <Label alignment="TOP_CENTER" prefHeight="23.0" prefWidth="286.0" text="Générateur de fiches de présence" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<AnchorPane onKeyPressed="#saveOnClick" onMouseClicked="#saveOnClick" prefHeight="607.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ensisa.alt.presence.controller.Controller">
+    <Label alignment="TOP_CENTER" onKeyPressed="#saveOnClick" onMouseClicked="#saveOnClick" prefHeight="23.0" prefWidth="286.0" text="Générateur de fiches de présence" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <font>
           <Font size="19.0" />
         </font>

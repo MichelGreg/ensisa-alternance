@@ -50,6 +50,14 @@ public class Controller {
 		User storedUser = persister.deserialiseUser();
 
 	}
+	@FXML protected void saveOnClick() throws JAXBException {
+		user.setName(name.getText());
+		user.setYear(year.getValue());
+		user.setSector(sector.getValue());
+		persister.serialiseUser(user);
+		System.out.println("Saved");
+	}
+
 	@FXML protected void onAddButtonClick() {
 		try {
 			if (label.getText().isBlank() || url.getText().isBlank()) {
@@ -57,11 +65,12 @@ public class Controller {
 			}
 			calendar.addCalendar(label.getText(), url.getText());
 			list.itemsProperty().bind(calendar.calendarsNameProperty());
+			persister.serialiseUser(user);
 			check.setText("Click !  label = " + label.getText() + " url = " + url.getText());
 		} catch (NullPointerException e) {
 			//TODO: coloration des champs vides.
 			System.out.println("label or url field is empty");
-		} catch (IllegalArgumentException e) {
+		} catch (IllegalArgumentException | JAXBException e) {
 			System.out.println(e.getMessage());
 		}
 	}
@@ -69,27 +78,35 @@ public class Controller {
 		try {
 			calendar.rmCalendar(list.getSelectionModel().getSelectedItem());
 			list.itemsProperty().bind(calendar.calendarsNameProperty());
+			persister.serialiseUser(user);
 			check.setText("Delete !");
 		} catch (NullPointerException e) {
 			System.out.println("Can't delete if no calendar selected");
+		} catch (JAXBException e) {
+			e.printStackTrace();
 		}
 	}
 	@FXML protected void onEditButtonClick() {
 		try {
 			calendar.editCalendar(list.getSelectionModel().getSelectedItem(), label.getText(), url.getText());
 			list.itemsProperty().bind(calendar.calendarsNameProperty());
+			persister.serialiseUser(user);
 			check.setText("Updated !");
 		} catch (NullPointerException e) {
 			System.out.println("Can't edit if no calendar selected");
+		} catch (JAXBException e) {
+			e.printStackTrace();
 		}
 	}
-	@FXML protected void onOpenFileClick() {
+	@FXML protected void onOpenFileClick() throws JAXBException {
+		persister.serialiseUser(user);
 		this.courseController.setIcalendarFromFile(selectFile(0));
 
 		this.excelController.generateFile(courseController.getSortedCourses(), name.getText(), year.getValue(), sector.getValue(), month.getValue());
 		this.excelController.saveFile(selectFile(1));
 	}
-	@FXML protected void onGenerateFileClick() {
+	@FXML protected void onGenerateFileClick() throws JAXBException {
+		persister.serialiseUser(user);
 		// Traitement du fichier excel
 		this.courseController.setIcalendarFromURL(TEST_URL);
 
@@ -102,8 +119,11 @@ public class Controller {
 			String key = list.getSelectionModel().getSelectedItem();
 			label.setText(key);
 			url.setText(calendar.getUrl(key));
+			persister.serialiseUser(user);
 		} catch (NullPointerException e){
 			System.out.println("No calendar selected");
+		} catch (JAXBException e) {
+			e.printStackTrace();
 		}
 	}
 
