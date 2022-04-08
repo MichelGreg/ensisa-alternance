@@ -137,6 +137,7 @@ public class Controller {
 			}
 		});
 		month.valueProperty().set(calendar.getCurrMonthProperty());
+		list.itemsProperty().bind(calendar.calendarsNameProperty());
 	}
 
 	/**
