@@ -32,7 +32,7 @@ public class ExcelController {
 		}
 	}
 
-	public void basicScript(List<Course> courses, String name, String year, String sector, Integer month) {
+	public void generateFile(List<Course> courses, String name, String year, String sector, Integer month) {
 		String upperMonth = Month.of(month).getDisplayName(TextStyle.FULL, Locale.FRENCH).toUpperCase();
 		String FILIERE = "";
 		if (year.matches("[1-3]A")) {

@@ -75,14 +75,14 @@ public class Controller {
 	@FXML protected void onOpenFileClick() {
 		this.courseController.setIcalendarFromFile(selectFile(0));
 
-		this.excelController.basicScript(courseController.getSortedCourses(), name.getText(), year.getValue(), sector.getValue(), month.getValue());
+		this.excelController.generateFile(courseController.getSortedCourses(), name.getText(), year.getValue(), sector.getValue(), month.getValue());
 		this.excelController.saveFile(selectFile(1));
 	}
 	@FXML protected void onGenerateFileClick() {
 		// Traitement du fichier excel
 		this.courseController.setIcalendarFromURL(TEST_URL);
 
-		this.excelController.basicScript(courseController.getSortedCourses(), name.getText(), year.getValue(), sector.getValue(), month.getValue());
+		this.excelController.generateFile(courseController.getSortedCourses(), name.getText(), year.getValue(), sector.getValue(), month.getValue());
 		File outputFile = selectFile(1);
 		excelController.saveFile(outputFile);
 	}
