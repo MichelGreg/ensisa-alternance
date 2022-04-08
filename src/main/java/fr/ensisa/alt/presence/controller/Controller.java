@@ -100,11 +100,13 @@ public class Controller {
 		this.user = new User();
 		this.calendar = new Calendar();
 
-		name.textProperty().set(user.getNameProperty());
+		this.calendar = user.getCalendar();
+
+		name.textProperty().set(user.getName());
 		year.itemsProperty().bind(user.yearsProperty());
-		year.valueProperty().set(user.getYearProperty());
+		year.valueProperty().set(user.getYear());
 		sector.itemsProperty().bind(user.sectorsProperty());
-		sector.valueProperty().set(user.getSectorProperty());
+		sector.valueProperty().set(user.getSector());
 		month.itemsProperty().bind(calendar.monthsProperty());
 		month.setConverter(new StringConverter<>() {
 			@Override

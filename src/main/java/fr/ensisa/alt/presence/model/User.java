@@ -1,8 +1,10 @@
 package fr.ensisa.alt.presence.model;
 
+import jakarta.xml.bind.annotation.XmlRootElement;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 
+@XmlRootElement
 public class User {
 	private Calendar calendar;
 
