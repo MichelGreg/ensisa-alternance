@@ -11,6 +11,8 @@ import java.util.*;
 public class Calendar {
 	@XmlElement(required = true)
 	private final TreeMap<String, String> calendars = new TreeMap<>();
+	private String SelectedCalendar;
+
 	public void addCalendar(String label, String url) {
 		calendars.put(label, url);
 	}
@@ -47,4 +49,10 @@ public class Calendar {
 	}
 
 
+	public void setSelectedCalendar(String key) {
+		this.SelectedCalendar = key;
+	}
+	public String getSelectedCalendar() {
+		return SelectedCalendar;
+	}
 }

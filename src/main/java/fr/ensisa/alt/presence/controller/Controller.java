@@ -118,6 +118,7 @@ public class Controller {
 			String key = list.getSelectionModel().getSelectedItem();
 			label.setText(key);
 			url.setText(calendar.getUrl(key));
+			user.getCalendar().setSelectedCalendar(key);
 			persister.serialiseUser(user);
 		} catch (NullPointerException e){
 			System.out.println("No calendar selected");
@@ -157,6 +158,7 @@ public class Controller {
 		});
 		month.valueProperty().set(calendar.getCurrMonthProperty());
 		list.itemsProperty().bind(calendar.calendarsNameProperty());
+		list.getSelectionModel().select(calendar.getSelectedCalendar());
 	}
 
 	/**
