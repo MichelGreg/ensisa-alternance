@@ -27,6 +27,7 @@ public class ExcelController {
 			this.wb.setSheetName(0, "default");
 			this.sheet = wb.getSheetAt(0);
 			this.wb.cloneSheet(0, "clone");
+			this.wb.setSheetHidden(wb.getSheetIndex("clone"), true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -94,7 +95,6 @@ public class ExcelController {
 		sheet.getRow(cr5.getRow()).getCell(cr5.getCol()).setCellValue(strTotal);
 		CellReference cr6 = new CellReference("G60");
 		sheet.getRow(cr6.getRow()).getCell(cr6.getCol()).setCellValue(strTotal);
-
 	}
 
 	public void saveFile(File file) {
