@@ -16,7 +16,6 @@ import java.time.format.TextStyle;
 import java.util.Locale;
 
 public class Controller {
-	private final String TEST_URL = "https://www.emploisdutemps.uha.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=bf2c64d11bfda874e5e5e7e10fcd13a50b42f0976007a22e3029ca7f36487f162a2c262ab3ba48506729f6560ae33af62704eb6c3e6444d06eebeb5635bb9f49,1";
 
 	private UserPersister persister;
 	private User user;
@@ -108,7 +107,7 @@ public class Controller {
 	@FXML protected void onGenerateFileClick() throws JAXBException {
 		persister.serialiseUser(user);
 		// Traitement du fichier excel
-		this.courseController.setIcalendarFromURL(TEST_URL);
+		this.courseController.setIcalendarFromURL(calendar.getUrl(list.getSelectionModel().getSelectedItem()));
 
 		this.excelController.generateFile(courseController.getSortedCourses(), name.getText(), year.getValue(), sector.getValue(), month.getValue());
 		File outputFile = selectFile(1);
