@@ -23,16 +23,28 @@ public class ExcelController {
 
 	public ExcelController() {
 		try {
-			FileInputStream excelInputStream = new FileInputStream(new File(Objects.requireNonNull(Controller.class.getResource("Fiche_presence.xlsx")).toURI()));
-			this.wb = new XSSFWorkbook(excelInputStream);
+			this.wb = new XSSFWorkbook(new File(Objects.requireNonNull(Controller.class.getResource("Fiche_presence.xlsx")).toURI()));
+			this.wb.setSheetName(0, "default");
 			this.sheet = wb.getSheetAt(0);
+			this.wb.cloneSheet(0, "clone");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
+	public void resetFile () {
+		try {
+			this.wb.removeSheetAt(wb.getSheetIndex("default"));
+			this.wb.cloneSheet(wb.getSheetIndex("clone"), "default");
+			this.wb.setActiveSheet(wb.getSheetIndex("default"));
+			this.sheet = wb.getSheet("default");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	public void generateFile(List<Course> courses, String name, String year, String sector, Integer month) {
+		resetFile();
 		String upperMonth = Month.of(month).getDisplayName(TextStyle.FULL, Locale.FRENCH).toUpperCase();
 		String FILIERE = "";
 		if (year.matches("[1-3]A")) {
