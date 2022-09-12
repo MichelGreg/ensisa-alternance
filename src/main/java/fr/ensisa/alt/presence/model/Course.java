@@ -28,13 +28,8 @@ public class Course implements Comparable<Course> {
 
 	private String parseProf(String desc) {
 		for (String descItem : desc.split("\n")) {
-			if (!descItem.isBlank()) {
-				for (char character : descItem.toCharArray()) {
-					if (Character.isDigit(character)) {
-						break;
-					}
-					return descItem.split(" ")[0];
-				}
+			if (!descItem.isBlank() && !descItem.matches(".*[0-9].*")) {
+				return descItem.split(" ")[0];
 			}
 		}
 		return null;
