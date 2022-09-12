@@ -7,13 +7,15 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onKeyPressed="#saveOnClick" onMouseClicked="#saveOnClick" prefHeight="607.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ensisa.alt.presence.controller.Controller">
+<AnchorPane minWidth="630.0" onKeyPressed="#saveOnClick" onMouseClicked="#saveOnClick" prefHeight="566.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ensisa.alt.presence.controller.Controller">
     <Label alignment="TOP_CENTER" onKeyPressed="#saveOnClick" onMouseClicked="#saveOnClick" prefHeight="23.0" prefWidth="286.0" text="Générateur de fiches de présence" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <font>
           <Font size="19.0" />
@@ -22,7 +24,7 @@
           <Insets top="10.0" />
         </padding>
     </Label>
-    <TitledPane animated="false" collapsible="false" layoutX="20.0" layoutY="38.0" prefHeight="110.0" prefWidth="463.0" text="Infos" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0">
+    <TitledPane animated="false" collapsible="false" layoutX="20.0" layoutY="38.0" prefHeight="110.0" prefWidth="463.0" text="Infos" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="60.0">
         <GridPane prefHeight="106.0" prefWidth="462.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="85.0" minWidth="85.0" prefWidth="85.0" />
@@ -46,7 +48,7 @@
             <ChoiceBox fx:id="sector" prefHeight="26.0" prefWidth="802.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
         </GridPane>
     </TitledPane>
-    <TitledPane animated="false" collapsible="false" layoutX="19.0" layoutY="169.0" prefHeight="187.0" prefWidth="689.0" text="Calendrier" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="175.0">
+    <TitledPane animated="false" collapsible="false" layoutX="19.0" layoutY="169.0" prefHeight="190.0" prefWidth="689.0" text="Calendrier" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="185.0">
         <GridPane prefHeight="106.0" prefWidth="462.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
@@ -77,7 +79,7 @@
             <Button fx:id="delete" mnemonicParsing="false" onMousePressed="#onDeleteButtonClick" prefHeight="26.0" prefWidth="75.0" text="Supprimer" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
         </GridPane>
     </TitledPane>
-    <TitledPane animated="false" collapsible="false" layoutX="20.0" layoutY="378.0" prefHeight="122.0" prefWidth="779.0" text="Génération" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+    <TitledPane animated="false" collapsible="false" layoutX="20.0" layoutY="387.0" prefHeight="122.0" prefWidth="779.0" text="Génération" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="390.0">
         <GridPane prefHeight="84.0" prefWidth="747.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="145.0" prefWidth="145.0" />
@@ -111,4 +113,12 @@
     </TitledPane>
     <Label fx:id="check" alignment="CENTER" layoutX="14.0" layoutY="589.0" prefHeight="18.0" prefWidth="486.0" textAlignment="CENTER" />
     <Button layoutX="238.0" layoutY="547.0" mnemonicParsing="false" onMousePressed="#onHelloButtonClick" text="Test" />
+    <ImageView fitHeight="54.0" fitWidth="110.0" layoutX="20.0" pickOnBounds="true" preserveRatio="true"
+               AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="0.0">
+        <Image url="@../images/ENSISA.png"/>
+    </ImageView>
+    <ImageView fitHeight="57.0" fitWidth="131.0" layoutX="494.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true"
+               AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+        <Image url="@../images/UHA.png"/>
+    </ImageView>
 </AnchorPane>
