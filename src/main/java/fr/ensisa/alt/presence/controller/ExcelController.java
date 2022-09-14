@@ -23,11 +23,14 @@ public class ExcelController {
 
 	public ExcelController() {
 		try {
-			this.wb = new XSSFWorkbook(new File(Objects.requireNonNull(Controller.class.getResource("Fiche_presence.xlsx")).toURI()));
+			this.wb = new XSSFWorkbook(Objects.requireNonNull(Controller.class.getResourceAsStream("Fiche_presence.xlsx")));
 			this.wb.setSheetName(0, "default");
 			this.sheet = wb.getSheetAt(0);
 			this.wb.cloneSheet(0, "clone");
 			this.wb.setSheetHidden(wb.getSheetIndex("clone"), true);
+		} catch (NullPointerException e) {
+			System.err.println("Impossible d'accéder au fichier xlsx d'origine");
+			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
